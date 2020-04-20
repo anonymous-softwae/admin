@@ -86,6 +86,11 @@ export default {
       isCollapsed: false
     }
   },
+  mounted: function () {
+    $(function () {
+      console.log('ready执行')
+    })
+  },
   computed: {
     rotateIcon () {
       return [
