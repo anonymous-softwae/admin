@@ -86,11 +86,6 @@ export default {
       isCollapsed: false
     }
   },
-  mounted: function () {
-    $(function () {
-      console.log('ready执行')
-    })
-  },
   computed: {
     rotateIcon () {
       return [
@@ -113,23 +108,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .layout{
-        border: 1px solid #d7dde4;
-        position: relative;
-        border-radius: 4px;
-        overflow: hidden;
-        margin-top: 62px;
-        height: calc(100vh-62px);
-    }
-    .foldIcon{
-        position: fixed;
-        bottom:30px;
-        color:#d7dde4;
-        z-index: 1000;
-        left:80px;
-    }
+    // .layout{
+    //     border: 1px solid brown;
+    //     position: relative;
+    //     border-radius: 4px;
+    //     overflow: hidden;
+    //     height: 100%;
+    // }
     .side{
      overflow:scroll;
+     width: 100%!important;
     /* //兼容Firefox隐藏滚动条 */
      scrollbar-width: none;
     /* //兼容IE隐藏滚动条 */
@@ -181,5 +169,12 @@ export default {
     .collapsed-menu ::v-deep .ivu-icon-ios-arrow-down{
         display: none;
         transition: display .2s ease;
+    }
+    .foldIcon{
+        position: fixed;
+        bottom:30px;
+        color:#d7dde4;
+        z-index: 1000;
+        left:80px;
     }
 </style>

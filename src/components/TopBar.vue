@@ -40,6 +40,8 @@ export default {
     return {
       theme1: 'light'
     }
+  },
+  mounted: function () {
   }
 }
 </script>

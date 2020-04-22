@@ -1,37 +1,40 @@
 <template>
-<div class="NavBarContainer">
-    <div class="scalable">
-        <div class="content">
-            <img src="@/assets/wh.jpg" alt="">
+    <div class="NavBarContainer">
+        <div class="scalable">
+            <div class="content">
+                <Siders></Siders>
+            </div>
+            <div class="separator">
+                <i></i><i></i>
+            </div>
         </div>
-        <div class="separator">
-            <i></i><i></i>
+        <div class="main">
+            <div class="content">
+                <!-- hello world! -->
+            </div>
         </div>
     </div>
-    <div class="main">
-        <div class="content">
-            hello world!
-        </div>
-    </div>
-</div>
 </template>
 <style scoped>
 .NavBarContainer{
     display: flex;
     margin: 0;
     min-height: 100%;
+    /* user-select: none;
+    -webkit-user-select: none; */
 }
 .scalable{
-    background-color: #eee;
+    background-color: #9ce79c;
     position: relative;
-    min-width: 40px;
+    min-width: 100px;
+    max-width: 100vw;
 }
 .main{
-    background-color: rgb(206, 127, 127);
+    background-color: rgb(255, 255, 255);
     flex:1;
 }
 .content{
-    padding: 20px;
+    padding: 0px;
 }
 .scalable .separator{
     display: flex;
@@ -42,7 +45,7 @@
     right:0;
     width: 10px;
     height: 100%;
-    background-color: black;
+    background-color: #656666;
     box-shadow:  0px 0px 2px rgb(0,0,0,.35);
     cursor: col-resize;
 }
@@ -50,7 +53,7 @@
     display: inline-block;
     height: 14px;
     width: 1px;
-    background-color: brown;
+    background-color: rgb(184, 182, 182);
     margin: 0 1px;
 }
 .scalable .content{
@@ -63,6 +66,9 @@
 }
 </style>
 <script>
+import Siders from '@/components/Sider'
+import Vue from 'vue'
+Vue.component('Siders', Siders)
 export default {
   mounted: function () {
     var startX, newWidth, startWidth
