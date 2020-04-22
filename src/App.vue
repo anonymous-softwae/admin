@@ -3,7 +3,9 @@
       <header><TopBar></TopBar></header>
       <Layout id="sublayout">
         <SideBar></SideBar>
-        <Content id="content"></Content>
+        <Content id="content">
+          <MainContent></MainContent>
+        </Content>
         <!-- <router-view></router-view> -->
       </Layout>
     </Layout>
@@ -11,9 +13,11 @@
 <script>
 import TopBar from '@/components/TopBar'
 import SideBar from '@/components/SideBar'
+import MainContent from '@/components/MainContent'
 import Vue from 'vue'
 Vue.component('TopBar', TopBar)
 Vue.component('SideBar', SideBar)
+Vue.component('MainContent', MainContent)
 export default {
 
 }
@@ -29,8 +33,8 @@ export default {
       height: 100vh;
     }
     #sublayout{
-      padding-top: 62px;
-      height: 100%;
+      margin-top: 62px;
+      height: calc(100vh-62px);
       display: flex;
       flex-flow: row nowrap;
     }

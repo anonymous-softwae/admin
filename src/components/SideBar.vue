@@ -118,8 +118,8 @@ export default {
         position: relative;
         border-radius: 4px;
         overflow: hidden;
-        padding-top: 62px;
-        height: 100vh;
+        margin-top: 62px;
+        height: calc(100vh-62px);
     }
     .foldIcon{
         position: fixed;
