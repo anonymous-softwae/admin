@@ -9,6 +9,6 @@
 <script src="https://kit.fontawesome.com/cdabc68344.js" crossorigin="anonymous"></script>
 <script>
 export default {
-    
+
 }
 </script>

@@ -2,7 +2,7 @@
     <div class="NavBarContainer">
         <div class="scalable">
             <div class="content">
-                <Siders></Siders>
+
             </div>
             <div class="separator">
                 <i></i><i></i>
@@ -66,9 +66,7 @@
 }
 </style>
 <script>
-import Siders from '@/components/Sider'
-import Vue from 'vue'
-Vue.component('Siders', Siders)
+
 export default {
   mounted: function () {
     var startX, newWidth, startWidth

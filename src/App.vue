@@ -1,23 +1,17 @@
 <template>
     <Layout id="layout">
-      <header><TopBar></TopBar></header>
-      <Layout id="sublayout">
         <SideBar></SideBar>
         <Content id="content">
-          <MainContent></MainContent>
+          <header><TopBar></TopBar></header>
         </Content>
-        <!-- <router-view></router-view> -->
-      </Layout>
     </Layout>
 </template>
 <script>
 import TopBar from '@/components/TopBar'
 import SideBar from '@/components/SideBar'
-import MainContent from '@/components/MainContent'
 import Vue from 'vue'
 Vue.component('TopBar', TopBar)
 Vue.component('SideBar', SideBar)
-Vue.component('MainContent', MainContent)
 export default {
 
 }
@@ -27,14 +21,11 @@ export default {
       padding: 0px;
       margin: 0px;
       list-style: none;
+      text-decoration: none;
       border: none;
     }
     #layout{
       height: 100vh;
-    }
-    #sublayout{
-      margin-top: 62px;
-      height: calc(100vh-62px);
       display: flex;
       flex-flow: row nowrap;
     }
