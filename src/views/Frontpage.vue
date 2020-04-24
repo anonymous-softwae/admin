@@ -1,10 +1,12 @@
 <template>
-    <Table border :columns="columns1" :data="data1">
-        <template slot-scope="{ row }" slot="device_name">
-            <strong>{{ row.device_name}}</strong>
+    <Table border :draggable="true" size="small" :columns="columns1" :data="data1" @on-drag-drop="onDragDrop" show-summary sum-text='合计'>
+        <template slot-scope="{ row }" slot="total_points">
+            振动测点：{{ row.total_points }}<br>
+            温度测点：{{ row.total_points }}<br>
+            压力测点：{{ row.total_points }}
         </template>
         <template slot-scope="{ row, index }" slot="action">
-            <Button type="primary" size="default" @click="show(index)">点击进入图谱</Button>
+            <Button type="primary" size="default" @click="show(index)">进入图谱</Button>
         </template>
     </Table>
 </template>
@@ -14,20 +16,29 @@ export default {
     return {
       columns1: [
         {
+          type: 'index',
+          title: '序号',
+          width: 60,
+          align: 'center'
+        },
+        {
           title: '装置名称',
-          slot: 'device_name'
+          key: 'device_name',
+          align: 'center'
         },
         {
           title: '设备名称',
-          key: 'equip_name'
+          key: 'equip_name',
+          align: 'center'
         },
         {
           title: '设备位号',
-          key: 'equip_tag'
+          key: 'equip_tag',
+          align: 'center'
         },
         {
           title: '总测点数',
-          key: 'total_points',
+          slot: 'total_points',
           align: 'center'
         },
         {
@@ -41,7 +52,7 @@ export default {
           align: 'center'
         },
         {
-          title: '详情查看',
+          title: '查看详情',
           slot: 'action',
           align: 'center'
         }
@@ -53,7 +64,7 @@ export default {
           equip_tag: 'K1122',
           total_points: 100,
           normal_points: 80,
-          normal_perct: 80,
+          normal_perct: 80 + '%',
           cellClassName: {
             normal_perct: 'demo-table-error-row'
           }
@@ -64,7 +75,7 @@ export default {
           equip_tag: 'K1130',
           total_points: 100,
           normal_points: 60,
-          normal_perct: 60,
+          normal_perct: 60 + '%',
           cellClassName: {
             normal_perct: 'demo-table-danger-row'
           }
@@ -75,9 +86,9 @@ export default {
           equip_tag: 'K2300',
           total_points: 100,
           normal_points: 100,
-          normal_perct: 100,
+          normal_perct: 100 + '%',
           cellClassName: {
-            normal_perct: 'demo-table-info-row'
+            normal_perct: 'demo-table-alert-row'
           }
         },
         {
@@ -86,7 +97,7 @@ export default {
           equip_tag: 'K1200',
           total_points: 100,
           normal_points: 90,
-          normal_perct: 90,
+          normal_perct: 90 + '%',
           cellClassName: {
             normal_perct: 'demo-table-error-row'
           }
@@ -96,8 +107,8 @@ export default {
           equip_name: '柴油加氢压缩机',
           equip_tag: 'K6500',
           total_points: 100,
-          normal_points: 85,
-          normal_perct: 55,
+          normal_points: 55,
+          normal_perct: 55 + '%',
           cellClassName: {
             normal_perct: 'demo-table-danger-row'
           }
@@ -108,9 +119,9 @@ export default {
           equip_tag: 'K1122',
           total_points: 100,
           normal_points: 100,
-          normal_perct: 100,
+          normal_perct: 100 + '%',
           cellClassName: {
-            normal_perct: 'demo-table-info-row'
+            normal_perct: 'demo-table-alert-row'
           }
         },
         {
@@ -119,7 +130,7 @@ export default {
           equip_tag: 'K2500',
           total_points: 100,
           normal_points: 93,
-          normal_perct: 93,
+          normal_perct: 93 + '%',
           cellClassName: {
             normal_perct: 'demo-table-error-row'
           }
@@ -130,7 +141,7 @@ export default {
           equip_tag: 'Q2500',
           total_points: 100,
           normal_points: 93,
-          normal_perct: 93,
+          normal_perct: 93 + '%',
           cellClassName: {
             normal_perct: 'demo-table-error-row'
           }
@@ -141,9 +152,108 @@ export default {
           equip_tag: 'K3000',
           total_points: 100,
           normal_points: 73,
-          normal_perct: 73,
+          normal_perct: 73 + '%',
           cellClassName: {
             normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '汽油加氢',
+          equip_name: '汽油加氢压缩机',
+          equip_tag: 'K3000',
+          total_points: 100,
+          normal_points: 73,
+          normal_perct: 73 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '汽油加氢',
+          equip_name: '汽油加氢压缩机',
+          equip_tag: 'K3000',
+          total_points: 100,
+          normal_points: 73,
+          normal_perct: 73 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '汽油加氢',
+          equip_name: '汽油加氢压缩机',
+          equip_tag: 'K3000',
+          total_points: 100,
+          normal_points: 73,
+          normal_perct: 73 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '汽油加氢',
+          equip_name: '汽油加氢压缩机',
+          equip_tag: 'K3000',
+          total_points: 100,
+          normal_points: 73,
+          normal_perct: 73 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '汽油加氢',
+          equip_name: '汽油加氢压缩机',
+          equip_tag: 'K3000',
+          total_points: 100,
+          normal_points: 73,
+          normal_perct: 73 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '焦化装置',
+          equip_name: '焦化富气压缩机',
+          equip_tag: 'K2300',
+          total_points: 100,
+          normal_points: 100,
+          normal_perct: 100 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-alert-row'
+          }
+        },
+        {
+          device_name: '重整装置',
+          equip_name: '重整循环氢压缩机',
+          equip_tag: 'K1200',
+          total_points: 100,
+          normal_points: 90,
+          normal_perct: 90 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-error-row'
+          }
+        },
+        {
+          device_name: '柴油加氢装置',
+          equip_name: '柴油加氢压缩机',
+          equip_tag: 'K6500',
+          total_points: 100,
+          normal_points: 55,
+          normal_perct: 55 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-danger-row'
+          }
+        },
+        {
+          device_name: '苯乙烯装置',
+          equip_name: '苯乙烯压缩机',
+          equip_tag: 'K1122',
+          total_points: 100,
+          normal_points: 100,
+          normal_perct: 100 + '%',
+          cellClassName: {
+            normal_perct: 'demo-table-alert-row'
           }
         }
 
@@ -164,24 +274,28 @@ export default {
     },
     rowClassName (row, index) {
       if (index === 2) {
-        return 'demo-table-info-row'
+        return 'demo-table-alert-row'
       } else if (index === 3) {
         return 'demo-table-error-row'
       } else if (index === 8) {
         return 'demo-table-danger-row'
       }
       return ''
+    },
+    onDragDrop (a, b) {
+      console.log(a, b)
+      this.data1.splice(b, 1, ...this.data1.splice(a, 1, this.data1[b]))
     }
   }
 }
 </script>
 <style>
-    .ivu-table .demo-table-info-row{
-        background-color: #187;
+    .ivu-table .demo-table-alert-row{
+        background-color: rgb(10, 187, 4);
         color: #fff;
     }
     .ivu-table .demo-table-error-row{
-        background-color: #ff6600;
+        background-color: #ff7920;
         color: #fff;
     }
     .ivu-table .demo-table-danger-row{

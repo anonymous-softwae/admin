@@ -15,6 +15,13 @@
             <li><a href="#"><v-icon name="cog" class="v-icon"/>系统设置</a></li>
             <li><a href="#"><v-icon name="sign-out-alt" class="v-icon"/>系统退出</a></li>
         </ul>
+        <div class="change_btn">
+            <input type="checkbox" id="check"/>
+            <label for="check">
+                <v-icon name="sign-out-alt" id="display_btn"/>
+                <v-icon name="sign-out-alt" id="cancel_btn"/>
+            </label>
+        </div>
     </div>
 </div>
 </template>
@@ -25,10 +32,8 @@
 .sidebar{
     width: 220px;
     height: 100%;
+    position: relative;
     background-color: #455055;
-}
-
-.sidebar{
      overflow-y:scroll;
     /* //兼容Firefox隐藏滚动条 */
      scrollbar-width: none;
@@ -62,8 +67,8 @@
 }
 .sidebar header span{
     font-size: 18px;
-    color: cornflowerblue;
-    font-weight: 700;
+    color: white;
+    font-weight: 500;
 }
 .sidebar ul a{
     display: block;
@@ -75,8 +80,10 @@
     padding-left: 40px;
     box-sizing: border-box;
     border-top:1px solid rgba(255,255,255,.1);
-    border-bottom: 1px solid rgb(189, 189, 189,.1);
     transition: .4s;
+}
+.sidebar ul li:nth-child(8){
+    border-bottom:1px solid rgba(255,255,255,.1);
 }
 ul li:hover a{
     padding-left: 50px;
@@ -85,5 +92,8 @@ ul li:hover a{
 .v-icon{
     margin-right: 16px;
     font-size: 18px;
+}
+#display_btn{
+    color: brown;
 }
 </style>

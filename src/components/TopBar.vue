@@ -26,7 +26,6 @@ export default {
     background:#fff;
     width: 100%;
     color:#515a6e;
-    overflow: hidden;
     height: 55px;
     position: relative;
     margin: 5px 0px 10px 0px;
@@ -60,7 +59,7 @@ export default {
     font-size: 16px;
 }
 .v-icon{
-    margin-right: 5px;
+    margin: 0 10px;
     vertical-align:text-bottom;
 }
 </style>
