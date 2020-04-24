@@ -1,8 +1,8 @@
 <template>
     <nav>
         <Breadcrumb :style="{margin: '0 0 0 20px',lineHeight:'62px',width:'100%',float:'left'} ">
-            <router-link to="/Frontpage"><BreadcrumbItem><v-icon name="home" class="v-icon"/>首页</BreadcrumbItem></router-link>
-            <router-link to="/Frontpage"><BreadcrumbItem><v-icon name="align-left" class="v-icon"/>概览</BreadcrumbItem></router-link>
+            <BreadcrumbItem><router-link to="/Frontpage"><v-icon name="home" class="v-icon"/>首页</router-link></BreadcrumbItem>
+            <BreadcrumbItem><router-link to="/Frontpage"><v-icon name="align-left" class="v-icon"/>概览</router-link></BreadcrumbItem>
         </Breadcrumb>
         <div class="Gadget">
             <div class="search"><Input search enter-button placeholder="搜索..."/></div>
@@ -27,8 +27,10 @@ export default {
     width: 100%;
     color:#515a6e;
     overflow: hidden;
-    height: 62px;
-    position: relative
+    height: 55px;
+    position: relative;
+    margin: 5px 0px 10px 0px;
+    border-radius: 5px;
 }
 .Gadget{
     position: absolute;
@@ -37,11 +39,11 @@ export default {
     flex-flow: row nowrap;
 }
 .search{
-    line-height: 62px;
+    line-height: 55px;
     margin: auto 20px;
 }
 .login {
-    line-height: 62px;
+    line-height: 55px;
     padding: 0 20px;
     z-index: 1000;
     transition: all .2s ease-in-out;
