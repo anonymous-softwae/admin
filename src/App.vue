@@ -1,9 +1,12 @@
 <template>
     <Layout id="layout">
         <SideBar></SideBar>
-        <Content id="content">
-          <header><TopBar></TopBar></header>
-        </Content>
+        <Layout id="sulayout">
+          <TopBar></TopBar>
+          <Content>
+            <router-view></router-view>
+          </Content>
+        </Layout>
     </Layout>
 </template>
 <script>
@@ -29,8 +32,8 @@ export default {
       display: flex;
       flex-flow: row nowrap;
     }
-    #content{
+    #sulayout{
       height: 100%;
-
+      background-color: rgb(235, 235, 235);
     }
 </style>
