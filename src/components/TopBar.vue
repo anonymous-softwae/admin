@@ -55,7 +55,7 @@ export default {
     position: fixed;
 }
 .logo{
-    width: 200px;
+    width: 220px;
     height:60px;
     float: left;
     position: relative;

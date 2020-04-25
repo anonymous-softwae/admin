@@ -1,23 +1,20 @@
 <template>
     <Layout id="layout">
-      <header><TopBar></TopBar></header>
+      <TopBar></TopBar>
       <Layout id="sublayout">
         <SideBar></SideBar>
-        <Content id="content">
-          <MainContent></MainContent>
+        <Content class="content">
+          <router-view></router-view>
         </Content>
-        <!-- <router-view></router-view> -->
       </Layout>
     </Layout>
 </template>
 <script>
 import TopBar from '@/components/TopBar'
 import SideBar from '@/components/SideBar'
-import MainContent from '@/components/MainContent'
 import Vue from 'vue'
 Vue.component('TopBar', TopBar)
 Vue.component('SideBar', SideBar)
-Vue.component('MainContent', MainContent)
 export default {
 
 }
@@ -32,14 +29,31 @@ export default {
     #layout{
       height: 100vh;
     }
-    #sublayout{
-      margin-top: 62px;
-      height: calc(100vh-62px);
+   #sulayout{
       display: flex;
       flex-flow: row nowrap;
-    }
-    #content{
       height: 100%;
-
+      background-color: rgb(235, 235, 235);
+      overflow-y:scroll;
+      overflow-x:none;
+      /* //兼容Firefox隐藏滚动条 */
+      scrollbar-width: none;
+      /* //兼容IE隐藏滚动条 */
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      -ms-content-zooming: zoom;
+      -ms-scroll-rails: none;
+      -ms-content-zoom-limit-min: 100%;
+      -ms-content-zoom-limit-max: 500%;
+      -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+      -ms-overflow-style: none;
+      overflow: auto;
+      /* //兼容CHROME隐藏滚动条 */
+        &::-webkit-scrollbar {
+          display: none;
+      }
+    }
+    .content{
+      height: 100%;
     }
 </style>

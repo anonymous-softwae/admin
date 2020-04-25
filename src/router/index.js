@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import FrontPage from '@/views/frontpage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    // path: '/FrontPage',
-    // name: 'FrontPage',
-    // component: FrontPage
+    path: '/FrontPage',
+    name: 'FrontPage',
+    component: FrontPage
+  },
+  {
+    path: '*',
+    name: 'FrontPage',
+    component: FrontPage
   }
 ]
 
