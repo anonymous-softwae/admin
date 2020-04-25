@@ -5,14 +5,7 @@
             <span>MMS状态监测系统</span>
         </header>
         <ul>
-            <li><a href="#"><v-icon name="home" title="信息概览" class="v-icon"/><span>信息概览</span></a></li>
-            <li><a href="#"><v-icon name="hdd" title="设备信息" class="v-icon"/><span>设备信息</span></a></li>
-            <li><a href="#"><v-icon name="chart-bar" title="图谱分析"  class="v-icon"/><span>图谱分析</span></a></li>
-            <li><a href="#"><v-icon name="info-circle" title="故障信息"  class="v-icon"/><span>故障信息</span></a></li>
-            <li><a href="#"><v-icon name="tools" title="设备维护"  class="v-icon"/><span>设备维护</span></a></li>
-            <li><a href="#"><v-icon name="receipt" title="报表系统"  class="v-icon"/><span>报表系统</span></a></li>
-            <li><a href="#"><v-icon name="cog" title="系统设置"  class="v-icon"/><span>系统设置</span></a></li>
-            <li><a href="#"><v-icon name="sign-out-alt" title="系统退出"  class="v-icon"/><span>系统退出</span></a></li>
+            <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
         </ul>
         <div class="change_btn">
             <input type="checkbox" id="check"/>
@@ -23,15 +16,76 @@
     </div>
 </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      barlist: [
+        {
+          name: 'home',
+          title: '信息概览',
+          txt: '信息概览'
+        },
+        {
+          name: 'hdd',
+          title: '设备信息',
+          txt: '设备信息'
+        },
+        {
+          name: 'chart-bar',
+          title: '图谱分析',
+          txt: '图谱分析'
+        },
+        {
+          name: 'tools',
+          title: '故障维护',
+          txt: '故障维护'
+        },
+        {
+          name: 'receipt',
+          title: '报表管理',
+          txt: '信息报表管理'
+        },
+        {
+          name: 'cog',
+          title: '系统设置',
+          txt: '系统设置'
+        }
+      ]
+    }
+  },
+  mounted: function () {
+    $('#display_btn').click(function () {
+      if (!$('#check').is(':checked')) {
+        $('.sidebar').css('width', '60px')
+        $('.sidebar header img').css({ width: '40px', margin: '20px auto 10px auto' })
+        $('.sidebar header span').css('display', 'none')
+        $('.change_btn #display_btn').css('left', '55px')
+        $('.sidebar ul li span').css('display', 'none')
+        $('.sidebar ul li a').css('padding-left', '20px')
+      } else {
+        $('.sidebar').css('width', '220px')
+        $('.sidebar header img').css({ width: '60px', margin: '15px auto 0px auto' })
+        $('.sidebar header span').css('display', '')
+        $('.change_btn #display_btn').css('left', '215px')
+        $('.sidebar ul li span').css('display', '')
+        $('.sidebar ul li a').css('padding-left', '40px')
+      }
+    })
+  }
+}
+</script>
 <style lang="scss">
 .sideContainer{
     height: 100%;
     position: relative;
 }
 .sidebar{
+    padding-top: 62px;
     width: 220px;
     height: 100%;
     position: relative;
+    transition: width .2s;
     background-color: #455055;
     overflow-y:scroll;
     /* //兼容Firefox隐藏滚动条 */
@@ -101,7 +155,7 @@ ul li:hover a{
 .change_btn #display_btn{
     color: #455055;
     position: fixed;
-    bottom: 400px;
+    bottom: 45vh;
     left: 215px;
     z-index: 9999;
     cursor: pointer;
@@ -110,26 +164,3 @@ ul li:hover a{
     display: none;
 }
 </style>
-<script>
-export default {
-  mounted: function () {
-    $('#display_btn').click(function () {
-      if (!$('#check').is(':checked')) {
-        $('.sidebar').css('width', '60px')
-        $('.sidebar header img').css({ width: '40px', margin: '20px auto 10px auto' })
-        $('.sidebar header span').css('display', 'none')
-        $('.change_btn #display_btn').css('left', '55px')
-        $('.sidebar ul li span').css('display', 'none')
-        $('.sidebar ul li a').css('padding-left', '20px')
-      } else {
-        $('.sidebar').css('width', '220px')
-        $('.sidebar header img').css({ width: '60px', margin: '15px auto 0px auto' })
-        $('.sidebar header span').css('display', '')
-        $('.change_btn #display_btn').css('left', '215px')
-        $('.sidebar ul li span').css('display', '')
-        $('.sidebar ul li a').css('padding-left', '40px')
-      }
-    })
-  }
-}
-</script>

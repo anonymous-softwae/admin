@@ -1,37 +1,36 @@
 <template>
-    <Menu class="menu" mode="horizontal" :theme="theme1" >
+    <Menu id="menu" mode="horizontal" :theme="theme1" >
         <div class="logo"><img src="@/assets/zhongwen.png"></div>
-        <div calss="nav">
+        <div class="nav">
             <MenuItem name="1">
-                <Icon type="ios-paper" />
-                <span>首页</span>
+                <v-icon name="home" title="信息概览" class="v-icon"/>
+                <span>我的首页</span>
             </MenuItem>
             <MenuItem name="2">
-                <Icon type="ios-people" />
-                <span>基本设置</span>
+                <v-icon name="hdd" title="设备信息" class="v-icon"/>
+                <span>设备信息</span>
             </MenuItem>
             <MenuItem name="3">
-                <Icon type="ios-construct" />
-                <span>页面管理</span>
+                <v-icon name="chart-bar" title="图谱分析"  class="v-icon"/>
+                <span>图谱分析</span>
             </MenuItem>
             <MenuItem name="4">
-                <Icon type="ios-construct" />
-                <span>商品管理</span>
+                <v-icon name="tools" title="设备维护"  class="v-icon"/>
+                <span>故障维护</span>
             </MenuItem>
             <MenuItem name="5">
-                <Icon type="ios-construct" />
-                <span>订单管理</span>
+                <v-icon name="receipt" title="报表系统"  class="v-icon"/>
+                <span>报表管理</span>
             </MenuItem>
             <MenuItem name="6">
-                <Icon type="ios-construct" />
-                <span>库存管理</span>
-            </MenuItem>
-            <MenuItem name="7">
-                <Icon type="ios-construct" />
-                <span>用户管理</span>
+                <v-icon name="cog" title="系统设置"  class="v-icon"/>
+                <span>系统设置</span>
             </MenuItem>
         </div>
-        <div class="login"><Icon type="md-person" /><span>登录</span></div>
+        <div class="Gadget">
+            <div class="search"><Input search enter-button placeholder="搜索..."/></div>
+            <div class="login"><v-icon name="user" class="v-icon"/><span>登录</span></div>
+        </div>
     </Menu>
 </template>
 <script>
@@ -46,7 +45,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
- .menu{
+ #menu{
     background:#fff;
     width: 100%;
     color:#515a6e;
@@ -67,25 +66,35 @@ export default {
         margin: 12px auto;
     }
 }
-.nav{
-    width: 500px;
-    margin-left: 50px;
+.Gadget{
+    float: right;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-right: 15px;
+}
+.search{
+    line-height: 55px;
+    margin: auto 20px;
 }
 .login {
-    float: right;
-    margin-right: 80px;
+    line-height: 55px;
     padding: 0 20px;
-    z-index: 100;
+    z-index: 1000;
     transition: all .2s ease-in-out;
-}
-.login i{
-    font-family: Ionicons;
-    font-size: 22px;
-    margin-right: 10px;
 }
 .login:hover{
     color: #2d8cf0;
-    border-bottom: 2px solid #2d8cf0;
     cursor: pointer;
+}
+.login .v-icon{
+    margin-right: 10px;
+    vertical-align:text-bottom;
+}
+.login span{
+    font-size: 16px;
+}
+.v-icon{
+    margin: 0 10px;
+    vertical-align:text-bottom;
 }
 </style>

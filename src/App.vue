@@ -1,12 +1,10 @@
 <template>
     <Layout id="layout">
       <TopBar></TopBar>
-      <Layout id="sublayout">
-        <SideBar></SideBar>
-        <Content class="content">
+      <SideBar></SideBar>
+      <Content id="content">
           <router-view></router-view>
-        </Content>
-      </Layout>
+      </Content>
     </Layout>
 </template>
 <script>
@@ -25,17 +23,17 @@ export default {
       margin: 0px;
       list-style: none;
       border: none;
-      height: 100vh;
     }
     #layout{
-      height: 100%;
-    }
-   #sulayout{
+      height: 100vh;
       display: flex;
-      flex-flow: column nowrap;
-      padding-top: 62px;
+      flex-flow: row nowrap;
+
+    }
+   #content{
       background-color: rgb(235, 235, 235);
-      overflow-y:scroll;
+      padding-top: 62px;
+      overflow-y:auto;
       overflow-x:none;
       /* //兼容Firefox隐藏滚动条 */
       scrollbar-width: none;
@@ -53,8 +51,5 @@ export default {
         &::-webkit-scrollbar {
           display: none;
       }
-    }
-    .content{
-      height: 100%;
     }
 </style>
