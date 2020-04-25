@@ -2,10 +2,10 @@
     <Menu id="menu" mode="horizontal" :theme="theme1" >
         <div class="logo"><img src="@/assets/zhongwen.png"></div>
         <div class="nav">
-            <MenuItem name="1">
+            <router-link to="/FrontPage"><MenuItem name="1">
                 <v-icon name="home" title="信息概览" class="v-icon"/>
                 <span>我的首页</span>
-            </MenuItem>
+            </MenuItem></router-link>
             <MenuItem name="2">
                 <v-icon name="hdd" title="设备信息" class="v-icon"/>
                 <span>设备信息</span>

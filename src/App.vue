@@ -1,18 +1,16 @@
 <template>
     <Layout id="layout">
       <TopBar></TopBar>
-      <SideBar></SideBar>
+      <router-view name="SideBar"></router-view>
       <Content id="content">
-          <router-view></router-view>
+          <router-view name="content"></router-view>
       </Content>
     </Layout>
 </template>
 <script>
-import TopBar from '@/components/TopBar'
-import SideBar from '@/components/SideBar'
 import Vue from 'vue'
+import TopBar from '@/components/TopBar.vue'
 Vue.component('TopBar', TopBar)
-Vue.component('SideBar', SideBar)
 export default {
 
 }

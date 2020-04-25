@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import FrontPage from '@/views/frontpage.vue'
+import SideBar from '@/components/SideBar.vue'
 
 Vue.use(VueRouter)
 
@@ -8,12 +9,17 @@ const routes = [
   {
     path: '/FrontPage',
     name: 'FrontPage',
-    component: FrontPage
+    components: {
+      content: FrontPage,
+      SideBar: SideBar
+    }
   },
   {
     path: '*',
     name: 'FrontPage',
-    component: FrontPage
+    components: {
+      content: FrontPage
+    }
   }
 ]
 
