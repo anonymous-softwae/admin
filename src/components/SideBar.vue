@@ -23,7 +23,7 @@
     </div>
 </div>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 .sideContainer{
     height: 100%;
     position: relative;
@@ -99,7 +99,7 @@ ul li:hover a{
     bottom: 100px;
 }
 .change_btn #display_btn{
-    color: #18df39;
+    color: #455055;
     position: fixed;
     bottom: 400px;
     left: 215px;

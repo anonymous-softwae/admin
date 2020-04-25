@@ -25,14 +25,15 @@ export default {
       margin: 0px;
       list-style: none;
       border: none;
+      height: 100vh;
     }
     #layout{
-      height: 100vh;
+      height: 100%;
     }
    #sulayout{
       display: flex;
-      flex-flow: row nowrap;
-      height: 100%;
+      flex-flow: column nowrap;
+      padding-top: 62px;
       background-color: rgb(235, 235, 235);
       overflow-y:scroll;
       overflow-x:none;
