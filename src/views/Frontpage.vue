@@ -18,7 +18,7 @@ export default {
         {
           type: 'index',
           title: '序号',
-          width: 60,
+          width: 70,
           align: 'center'
         },
         {

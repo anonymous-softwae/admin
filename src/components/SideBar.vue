@@ -6,20 +6,19 @@
             <span>MMS状态监测系统</span>
         </header>
         <ul>
-            <li><a href="#"><v-icon name="home" class="v-icon"/>信息概览</a></li>
-            <li><a href="#"><v-icon name="hdd" class="v-icon"/>设备信息</a></li>
-            <li><a href="#"><v-icon name="chart-bar" class="v-icon"/>图谱分析</a></li>
-            <li><a href="#"><v-icon name="info-circle" class="v-icon"/>故障信息</a></li>
-            <li><a href="#"><v-icon name="tools" class="v-icon"/>设备维护</a></li>
-            <li><a href="#"><v-icon name="receipt" class="v-icon"/>报表系统</a></li>
-            <li><a href="#"><v-icon name="cog" class="v-icon"/>系统设置</a></li>
-            <li><a href="#"><v-icon name="sign-out-alt" class="v-icon"/>系统退出</a></li>
+            <li><a href="#"><v-icon name="home" title="信息概览" class="v-icon"/><span>信息概览</span></a></li>
+            <li><a href="#"><v-icon name="hdd" title="设备信息" class="v-icon"/><span>设备信息</span></a></li>
+            <li><a href="#"><v-icon name="chart-bar" title="图谱分析"  class="v-icon"/><span>图谱分析</span></a></li>
+            <li><a href="#"><v-icon name="info-circle" title="故障信息"  class="v-icon"/><span>故障信息</span></a></li>
+            <li><a href="#"><v-icon name="tools" title="设备维护"  class="v-icon"/><span>设备维护</span></a></li>
+            <li><a href="#"><v-icon name="receipt" title="报表系统"  class="v-icon"/><span>报表系统</span></a></li>
+            <li><a href="#"><v-icon name="cog" title="系统设置"  class="v-icon"/><span>系统设置</span></a></li>
+            <li><a href="#"><v-icon name="sign-out-alt" title="系统退出"  class="v-icon"/><span>系统退出</span></a></li>
         </ul>
         <div class="change_btn">
             <input type="checkbox" id="check"/>
             <label for="check">
-                <v-icon name="sign-out-alt" id="display_btn"/>
-                <v-icon name="sign-out-alt" id="cancel_btn"/>
+                <v-icon name="caret-right" id="display_btn" scale="3.5"/>
             </label>
         </div>
     </div>
@@ -28,13 +27,14 @@
 <style lang="scss" scoped>
 .sideContainer{
     height: 100%;
+    position: relative;
 }
 .sidebar{
     width: 220px;
     height: 100%;
     position: relative;
     background-color: #455055;
-     overflow-y:scroll;
+    overflow-y:scroll;
     /* //兼容Firefox隐藏滚动条 */
      scrollbar-width: none;
     /* //兼容IE隐藏滚动条 */
@@ -61,14 +61,14 @@
     user-select: none;
 }
 .sidebar header img{
-    width: 50px;
+    width: 60px;
     display: block;
-    margin:20px auto 0px auto;
+    margin:15px auto 0px auto;
 }
 .sidebar header span{
     font-size: 18px;
     color: white;
-    font-weight: 500;
+    font-weight: 400;
 }
 .sidebar ul a{
     display: block;
@@ -93,7 +93,45 @@ ul li:hover a{
     margin-right: 16px;
     font-size: 18px;
 }
-#display_btn{
-    color: brown;
+.change_btn{
+    position: absolute;
+    background: cadetblue;
+    left: 80px;
+    bottom: 100px;
 }
+.change_btn #display_btn{
+    color: #455055;
+    position: fixed;
+    bottom: 400px;
+    left: 215px;
+    z-index: 9999;
+    cursor: pointer;
+}
+.change_btn #check{
+    display: none;
+}
+
 </style>
+<script>
+export default {
+  mounted: function () {
+    $('#display_btn').click(function () {
+      if (!$('#check').is(':checked')) {
+        $('.sidebar').css('width', '60px')
+        $('.sidebar header img').css({ width: '40px', margin: '20px auto 10px auto' })
+        $('.sidebar header span').css('display', 'none')
+        $('.change_btn #display_btn').css('left', '55px')
+        $('.sidebar ul li span').css('display', 'none')
+        $('.sidebar ul li a').css('padding-left', '20px')
+      } else {
+        $('.sidebar').css('width', '220px')
+        $('.sidebar header img').css({ width: '60px', margin: '15px auto 0px auto' })
+        $('.sidebar header span').css('display', '')
+        $('.change_btn #display_btn').css('left', '215px')
+        $('.sidebar ul li span').css('display', '')
+        $('.sidebar ul li a').css('padding-left', '40px')
+      }
+    })
+  }
+}
+</script>

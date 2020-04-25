@@ -1,6 +1,7 @@
 <template>
     <nav>
         <Breadcrumb :style="{margin: '0 0 0 20px',lineHeight:'62px',width:'100%',float:'left'} ">
+        <!--v-icon属性"name: string"-图标引用名称, "scale: number|string"-图标倍增,"spin: boolean"-图标是否旋转,"pulse: boolean"-图标脉动旋转,"flip: 'vertical'|'horizontal'|'both'"-旋转方向,""-->
             <BreadcrumbItem><router-link to="/Frontpage"><v-icon name="home" class="v-icon"/>首页</router-link></BreadcrumbItem>
             <BreadcrumbItem><router-link to="/Frontpage"><v-icon name="align-left" class="v-icon"/>概览</router-link></BreadcrumbItem>
         </Breadcrumb>
