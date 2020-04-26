@@ -1,6 +1,7 @@
 <template>
     <Layout id="layout">
-      <TopBar></TopBar>
+      <router-view name="Login"></router-view>
+      <router-view name="TopBar"></router-view>
       <router-view name="SideBar"></router-view>
       <Content id="content">
           <router-view name="content"></router-view>

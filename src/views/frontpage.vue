@@ -1,304 +1,107 @@
 <template>
-    <Table border :draggable="true" size="small" :columns="columns1" :data="data1" @on-drag-drop="onDragDrop">
-        <template slot-scope="{ row }" slot="total_points">
-            振动测点2：{{ row.total_points }}<br>
-            温度测点2：{{ row.total_points }}<br>
-            压力测点2：{{ row.total_points }}
-        </template>
-        <template slot-scope="{ row, index }" slot="action">
-            <Button type="primary" size="default" @click="show(index)">进入图谱</Button>
-        </template>
-    </Table>
+    <Card style="width:350px">
+        <p slot="title">
+            <Icon type="ios-film-outline"></Icon>
+            Classic film
+        </p>
+        <a href="#" slot="extra" @click.prevent="changeLimit">
+            <Icon type="ios-loop-strong"></Icon>
+            Change
+        </a>
+        <ul>
+            <li v-for="item in randomMovieList" :key="item.index">
+                <a :href="item.url" target="_blank">{{ item.name }}</a>
+                <span>
+                    <Icon type="ios-star" v-for="n in 4" :key="n"></Icon><Icon type="ios-star" v-if="item.rate >= 9.5"></Icon><Icon type="ios-star-half" v-else></Icon>
+                    {{ item.rate }}
+                </span>
+            </li>
+        </ul>
+    </Card>
 </template>
 <script>
 export default {
   data () {
     return {
-      columns1: [
+      movieList: [
         {
-          type: 'index',
-          title: '序号',
-          width: 70,
-          align: 'center'
+          name: 'The Shawshank Redemption',
+          url: 'https://movie.douban.com/subject/1292052/',
+          rate: 9.6
         },
         {
-          title: '装置名称',
-          key: 'device_name',
-          align: 'center'
+          name: 'Leon:The Professional',
+          url: 'https://movie.douban.com/subject/1295644/',
+          rate: 9.4
         },
         {
-          title: '设备名称',
-          key: 'equip_name',
-          align: 'center'
+          name: 'Farewell to My Concubine',
+          url: 'https://movie.douban.com/subject/1291546/',
+          rate: 9.5
         },
         {
-          title: '设备位号',
-          key: 'equip_tag',
-          align: 'center'
+          name: 'Forrest Gump',
+          url: 'https://movie.douban.com/subject/1292720/',
+          rate: 9.4
         },
         {
-          title: '总测点数',
-          slot: 'total_points',
-          align: 'center'
+          name: 'Life Is Beautiful',
+          url: 'https://movie.douban.com/subject/1292063/',
+          rate: 9.5
         },
         {
-          title: '正常测点数',
-          key: 'normal_points',
-          align: 'center'
+          name: 'Spirited Away',
+          url: 'https://movie.douban.com/subject/1291561/',
+          rate: 9.2
         },
         {
-          title: '正常百分率',
-          key: 'normal_perct',
-          align: 'center'
+          name: 'Schindler List',
+          url: 'https://movie.douban.com/subject/1295124/',
+          rate: 9.4
         },
         {
-          title: '查看详情',
-          slot: 'action',
-          align: 'center'
+          name: 'The Legend of 1900',
+          url: 'https://movie.douban.com/subject/1292001/',
+          rate: 9.2
+        },
+        {
+          name: 'WALL·E',
+          url: 'https://movie.douban.com/subject/2131459/',
+          rate: 9.3
+        },
+        {
+          name: 'Inception',
+          url: 'https://movie.douban.com/subject/3541415/',
+          rate: 9.2
         }
       ],
-      data1: [
-        {
-          device_name: '催化装置',
-          equip_name: '主风机',
-          equip_tag: 'K1122',
-          total_points: 100,
-          normal_points: 80,
-          normal_perct: 80 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-error-row'
-          }
-        },
-        {
-          device_name: '催化装置',
-          equip_name: '备用风机',
-          equip_tag: 'K1130',
-          total_points: 100,
-          normal_points: 60,
-          normal_perct: 60 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '焦化装置',
-          equip_name: '焦化富气压缩机',
-          equip_tag: 'K2300',
-          total_points: 100,
-          normal_points: 100,
-          normal_perct: 100 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-alert-row'
-          }
-        },
-        {
-          device_name: '重整装置',
-          equip_name: '重整循环氢压缩机',
-          equip_tag: 'K1200',
-          total_points: 100,
-          normal_points: 90,
-          normal_perct: 90 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-error-row'
-          }
-        },
-        {
-          device_name: '柴油加氢装置',
-          equip_name: '柴油加氢压缩机',
-          equip_tag: 'K6500',
-          total_points: 100,
-          normal_points: 55,
-          normal_perct: 55 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '苯乙烯装置',
-          equip_name: '苯乙烯压缩机',
-          equip_tag: 'K1122',
-          total_points: 100,
-          normal_points: 100,
-          normal_perct: 100 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-alert-row'
-          }
-        },
-        {
-          device_name: '加氢处理装置',
-          equip_name: '加氢处理压缩机',
-          equip_tag: 'K2500',
-          total_points: 100,
-          normal_points: 93,
-          normal_perct: 93 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-error-row'
-          }
-        },
-        {
-          device_name: '动力中心',
-          equip_name: '汽轮发电机',
-          equip_tag: 'Q2500',
-          total_points: 100,
-          normal_points: 93,
-          normal_perct: 93 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-error-row'
-          }
-        },
-        {
-          device_name: '汽油加氢',
-          equip_name: '汽油加氢压缩机',
-          equip_tag: 'K3000',
-          total_points: 100,
-          normal_points: 73,
-          normal_perct: 73 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '汽油加氢',
-          equip_name: '汽油加氢压缩机',
-          equip_tag: 'K3000',
-          total_points: 100,
-          normal_points: 73,
-          normal_perct: 73 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '汽油加氢',
-          equip_name: '汽油加氢压缩机',
-          equip_tag: 'K3000',
-          total_points: 100,
-          normal_points: 73,
-          normal_perct: 73 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '汽油加氢',
-          equip_name: '汽油加氢压缩机',
-          equip_tag: 'K3000',
-          total_points: 100,
-          normal_points: 73,
-          normal_perct: 73 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '汽油加氢',
-          equip_name: '汽油加氢压缩机',
-          equip_tag: 'K3000',
-          total_points: 100,
-          normal_points: 73,
-          normal_perct: 73 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '汽油加氢',
-          equip_name: '汽油加氢压缩机',
-          equip_tag: 'K3000',
-          total_points: 100,
-          normal_points: 73,
-          normal_perct: 73 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '焦化装置',
-          equip_name: '焦化富气压缩机',
-          equip_tag: 'K2300',
-          total_points: 100,
-          normal_points: 100,
-          normal_perct: 100 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-alert-row'
-          }
-        },
-        {
-          device_name: '重整装置',
-          equip_name: '重整循环氢压缩机',
-          equip_tag: 'K1200',
-          total_points: 100,
-          normal_points: 90,
-          normal_perct: 90 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-error-row'
-          }
-        },
-        {
-          device_name: '柴油加氢装置',
-          equip_name: '柴油加氢压缩机',
-          equip_tag: 'K6500',
-          total_points: 100,
-          normal_points: 55,
-          normal_perct: 55 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-danger-row'
-          }
-        },
-        {
-          device_name: '苯乙烯装置',
-          equip_name: '苯乙烯压缩机',
-          equip_tag: 'K1122',
-          total_points: 100,
-          normal_points: 100,
-          normal_perct: 100 + '%',
-          cellClassName: {
-            normal_perct: 'demo-table-alert-row'
-          }
-        }
-      ]
+      randomMovieList: []
     }
   },
   methods: {
-    show (index) {
-      this.$Modal.info({
-        title: '设备状态详情',
-        content: `装置名称：${this.data1[index].device_name}<br>
-                  设备名称：${this.data1[index].equip_name}<br>
-                  设备位号：${this.data1[index].equip_tag}<br>
-                  测点总数：${this.data1[index].total_points}<br>
-                  正常点数：${this.data1[index].normal_points}<br>
-                  正常率：${this.data1[index].normal_perct}<br>`
-      })
-    },
-    rowClassName (row, index) {
-      if (index === 2) {
-        return 'demo-table-alert-row'
-      } else if (index === 3) {
-        return 'demo-table-error-row'
-      } else if (index === 8) {
-        return 'demo-table-danger-row'
+    changeLimit () {
+      function getArrayItems (arr, num) {
+        const tempArray = []
+        for (const index in arr) {
+          tempArray.push(arr[index])
+        }
+        const returnArray = []
+        for (let i = 0; i < num; i++) {
+          if (tempArray.length > 0) {
+            const arrIndex = Math.floor(Math.random() * tempArray.length)
+            returnArray[i] = tempArray[arrIndex]
+            tempArray.splice(arrIndex, 1)
+          } else {
+            break
+          }
+        }
+        return returnArray
       }
-      return ''
-    },
-    onDragDrop (a, b) {
-      console.log(a, b)
-      this.data1.splice(b, 1, ...this.data1.splice(a, 1, this.data1[b]))
+      this.randomMovieList = getArrayItems(this.movieList, 5)
     }
+  },
+  mounted () {
+    this.changeLimit()
   }
 }
 </script>
-<style>
-    .ivu-table .demo-table-alert-row{
-        background-color: rgb(10, 187, 4);
-        color: #fff;
-    }
-    .ivu-table .demo-table-error-row{
-        background-color: #ff7920;
-        color: #fff;
-    }
-    .ivu-table .demo-table-danger-row{
-        background-color: #ff0000;
-        color: #fff;
-    }
-</style>

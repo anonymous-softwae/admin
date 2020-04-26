@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import FrontPage from '@/views/FrontPage.vue'
+import FrontPage from '@/views/frontpage.vue'
 import SideBarEquipInfo from '@/components/SideBar_EquipInfo.vue'
 import SideBarCharts from '@/components/SideBar_Charts.vue'
 import SideBarFrontPage from '@/components/SideBar_FrontPage.vue'
+import TopBar from '@/components/TopBar.vue'
 import EquipInfo from '@/views/EquipInfo.vue'
+import Login from '@/views/Login.vue'
 import Chart from '@/views/Charts.vue'
 
 Vue.use(VueRouter)
@@ -14,31 +16,41 @@ const routes = [
     path: '/FrontPage',
     name: 'FrontPage',
     components: {
-      content: FrontPage,
-      SideBar: SideBarFrontPage
+      TopBar: TopBar,
+      SideBar: SideBarFrontPage,
+      content: FrontPage
     }
   },
   {
     path: '/EquipInfo',
     name: 'EquipInfo',
     components: {
-      content: EquipInfo,
-      SideBar: SideBarEquipInfo
+      TopBar: TopBar,
+      SideBar: SideBarEquipInfo,
+      content: EquipInfo 
     }
   },
   {
     path: '/Charts',
     name: 'Charts',
     components: {
-      content: Chart,
-      SideBar: SideBarCharts
+      TopBar: TopBar,
+      SideBar: SideBarCharts,
+      content: Chart
+    }
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    components: {
+      Login: Login
     }
   },
   {
     path: '*',
     name: 'all',
     components: {
-      content: FrontPage
+      Login: Login
     }
   }
 ]

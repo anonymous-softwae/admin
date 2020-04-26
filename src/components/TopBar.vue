@@ -29,7 +29,7 @@
         </div>
         <div class="Gadget">
             <div class="search"><Input search enter-button placeholder="搜索..."/></div>
-            <div class="login"><v-icon name="user" class="v-icon"/><span>退出</span></div>
+            <div class="login"><router-link to="/Login"><v-icon name="user" class="v-icon"/><span>登录</span></router-link></div>
         </div>
     </Menu>
 </template>
