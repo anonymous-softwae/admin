@@ -2,8 +2,8 @@
 <div class="sideContainer">
     <div class="sidebar">
       <div class="head">
-        <v-icon name="hdd" title="设备信息" class="v-icon" scale="1.2"/>
-                <span>设备信息</span>
+        <v-icon :name='headlist.name' :title='headlist.title' class="v-icon" scale="1.2"/>
+        <span>{{headlist.title}}</span>
       </div>
         <ul>
             <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
@@ -21,32 +21,27 @@
 export default {
   data () {
     return {
+      headlist: {
+        name: 'hdd',
+        title: '设备状态'
+      },
       barlist: [
         {
-          name: 'hdd',
-          title: '设备信息',
-          txt: '设备信息'
+          name: 'binoculars',
+          title: '状态总览',
+          txt: '状态总览'
         },
         {
-          name: 'chart-bar',
-          title: '图谱分析',
-          txt: '图谱分析'
+          name: 'route',
+          title: '设备导航树',
+          txt: '设备导航树'
         },
         {
-          name: 'tools',
-          title: '故障维护',
-          txt: '故障维护'
-        },
-        {
-          name: 'receipt',
-          title: '报表管理',
-          txt: '报表管理'
-        },
-        {
-          name: 'cog',
-          title: '系统设置',
-          txt: '系统设置'
+          name: 'exclamation-triangle',
+          title: '报警信息',
+          txt: '报警信息'
         }
+
       ]
     }
   },

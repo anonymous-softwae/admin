@@ -2,8 +2,8 @@
 <div class="sideContainer">
     <div class="sidebar">
       <div class="head">
-        <v-icon name="chart-bar" title="图谱分析" class="v-icon" scale="1.2"/>
-                <span>图谱分析</span>
+        <v-icon :name='headlist.name' :title='headlist.title' class="v-icon" scale="1.2"/>
+        <span>{{headlist.title}}</span>
       </div>
         <ul>
             <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
@@ -21,6 +21,10 @@
 export default {
   data () {
     return {
+      headlist: {
+        name: 'chart-bar',
+        title: '图谱分析'
+      },
       barlist: [
         {
           name: 'hdd',

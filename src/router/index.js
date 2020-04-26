@@ -36,7 +36,7 @@ const routes = [
   },
   {
     path: '*',
-    name: 'FrontPage',
+    name: 'all',
     components: {
       content: FrontPage
     }

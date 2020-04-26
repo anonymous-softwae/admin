@@ -2,8 +2,8 @@
 <div class="sideContainer">
     <div class="sidebar">
       <div class="head">
-        <v-icon name="home" title="我的首页" class="v-icon" scale="1.2"/>
-                <span>我的首页</span>
+        <v-icon :name='headlist.name' :title='headlist.title' class="v-icon" scale="1.2"/>
+        <span>{{headlist.title}}</span>
       </div>
         <ul>
             <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
@@ -21,6 +21,10 @@
 export default {
   data () {
     return {
+      headlist: {
+        name: 'home',
+        title: '我的首页'
+      },
       barlist: [
         {
           name: 'hdd',
@@ -80,7 +84,7 @@ export default {
     border: none;
 }
 .sidebar{
-    padding-top:72px;
+    padding-top:70px;
     width: 60px;
     height: 100%;
     position: relative;

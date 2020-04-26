@@ -1,50 +1,41 @@
 <template>
     <Menu id="menu" mode="horizontal" theme="light" >
-        <div class="logo"><img src="@/assets/zhongwen.png"></div>
+        <div class="logo"><img src="@/assets/logo.png"></div>
         <div class="nav">
             <router-link to="/FrontPage"><MenuItem name="1">
                 <v-icon name="home" title="信息概览" class="v-icon"/>
-                <span>我的首页</span>
+                <span>首页</span>
             </MenuItem></router-link>
             <router-link to="/EquipInfo"><MenuItem name="2">
-                <v-icon name="hdd" title="设备信息" class="v-icon"/>
-                <span>设备信息</span>
+                <v-icon name="hdd" title="设备状态" class="v-icon"/>
+                <span>机组状态</span>
             </MenuItem></router-link>
             <router-link to="/Charts"><MenuItem name="3">
                 <v-icon name="chart-bar" title="图谱分析"  class="v-icon"/>
-                <span>图谱分析</span>
+                <span>图谱</span>
             </MenuItem></router-link>
             <MenuItem name="4">
                 <v-icon name="tools" title="设备维护"  class="v-icon"/>
-                <span>故障维护</span>
+                <span>事件列表</span>
             </MenuItem>
             <MenuItem name="5">
                 <v-icon name="receipt" title="报表系统"  class="v-icon"/>
-                <span>报表管理</span>
+                <span>报表</span>
             </MenuItem>
             <MenuItem name="6">
                 <v-icon name="cog" title="系统设置"  class="v-icon"/>
-                <span>系统设置</span>
+                <span>设置</span>
             </MenuItem>
         </div>
         <div class="Gadget">
             <div class="search"><Input search enter-button placeholder="搜索..."/></div>
-            <div class="login"><v-icon name="user" class="v-icon"/><span>登录</span></div>
+            <div class="login"><v-icon name="user" class="v-icon"/><span>退出</span></div>
         </div>
     </Menu>
 </template>
-<script>
-export default {
-  data () {
-
-  },
-  mounted: function () {
-  }
-}
-</script>
 <style lang="scss" scoped>
  #menu{
-    background:#fff;
+    background:ghostwhite;
     width: 100%;
     color:#515a6e;
     overflow: hidden;
@@ -59,9 +50,9 @@ export default {
     text-align: center;
     vertical-align: middle;
     img{
-        width: 50px;
+        width: 140px;
         display: inline-block;
-        margin: 12px auto;
+        margin: 15px auto 12px auto;
     }
 }
 .Gadget{
@@ -71,11 +62,11 @@ export default {
     margin-right: 15px;
 }
 .search{
-    line-height: 55px;
-    margin: auto 20px;
+    line-height: 62px;
+    margin: auto;
 }
 .login {
-    line-height: 55px;
+    line-height: 62px;
     padding: 0 20px;
     z-index: 1000;
     transition: all .2s ease-in-out;
