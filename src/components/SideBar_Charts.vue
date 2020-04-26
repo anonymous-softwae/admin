@@ -1,9 +1,10 @@
 <template>
 <div class="sideContainer">
     <div class="sidebar">
-        <header>
-            <span>MMS状态监测系统</span>
-        </header>
+      <div class="head">
+        <v-icon name="chart-bar" title="图谱分析" class="v-icon" scale="1.2"/>
+                <span>图谱分析</span>
+      </div>
         <ul>
             <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
         </ul>
@@ -22,11 +23,6 @@ export default {
     return {
       barlist: [
         {
-          name: 'home',
-          title: '信息概览',
-          txt: '信息概览'
-        },
-        {
           name: 'hdd',
           title: '设备信息',
           txt: '设备信息'
@@ -44,7 +40,7 @@ export default {
         {
           name: 'receipt',
           title: '报表管理',
-          txt: '信息报表管理'
+          txt: '报表管理'
         },
         {
           name: 'cog',
@@ -57,35 +53,37 @@ export default {
   mounted: function () {
     $('#display_btn').click(function () {
       if (!$('#check').is(':checked')) {
-        $('.sidebar').css('width', '60px')
-        $('.sidebar header img').css({ width: '40px', margin: '20px auto 10px auto' })
-        $('.sidebar header span').css('display', 'none')
-        $('.change_btn #display_btn').css('left', '55px')
-        $('.sidebar ul li span').css('display', 'none')
-        $('.sidebar ul li a').css('padding-left', '20px')
-      } else {
         $('.sidebar').css('width', '220px')
-        $('.sidebar header img').css({ width: '60px', margin: '15px auto 0px auto' })
-        $('.sidebar header span').css('display', '')
+        $('.sidebar .head span').css('display', 'inline')
+        $('.sidebar .head').css('padding-left', '20px')
+        $('ul li:hover a').css('padding-left', '50px')
         $('.change_btn #display_btn').css('left', '215px')
-        $('.sidebar ul li span').css('display', '')
+        $('.sidebar ul span').css('display', 'inline')
         $('.sidebar ul li a').css('padding-left', '40px')
+      } else {
+        $('.sidebar').css('width', '60px')
+        $('.sidebar .head span').css('display', 'none')
+        $('.sidebar .head').css('padding-left', '16px')
+        $('ul li:hover a').css('padding-left', '')
+        $('.change_btn #display_btn').css('left', '55px')
+        $('.sidebar ul span').css('display', 'none')
+        $('.sidebar ul li a').css('padding-left', '20px')
       }
     })
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .sideContainer{
     height: 100%;
     position: relative;
+    border: none;
 }
 .sidebar{
-    padding-top: 62px;
-    width: 220px;
+    padding-top:72px;
+    width: 60px;
     height: 100%;
     position: relative;
-    transition: width .2s;
     background-color: #455055;
     overflow-y:scroll;
     /* //兼容Firefox隐藏滚动条 */
@@ -105,41 +103,34 @@ export default {
         display: none;
     }
 }
-.sidebar header{
-    font-size: 18px;
-    color:white;
-    text-align: center;
-    line-height: 60px;
-    background-color: #455055;
-    user-select: none;
+.sidebar .head{
+  color: rgb(2, 117, 218);
+  padding-left: 16px;
+  line-height: 70px;
+  font-size: 18px;
+  font-weight: 500;
+  user-select: none;
+  transition: 0.6s;
 }
-.sidebar header img{
-    width: 60px;
-    display: block;
-    margin:15px auto 0px auto;
+.sidebar .head span{
+  display: none;
 }
-.sidebar header span{
-    font-size: 18px;
-    color: white;
-    font-weight: 400;
-}
-.sidebar ul a{
+.sidebar ul li a{
     display: block;
     height: 100%;
     width: 100%;
     line-height: 55px;
     font-size: 16px;
-    color:white;
-    padding-left: 40px;
-    box-sizing: border-box;
-    border-top:1px solid rgba(255,255,255,.1);
-    transition: .4s;
-}
-.sidebar ul li:nth-child(8){
+    transition: 0.6s;
+    color:aliceblue;
+    padding-left: 20px;
     border-bottom:1px solid rgba(255,255,255,.1);
 }
+.sidebar ul li span{
+  display: none;
+};
 ul li:hover a{
-    padding-left: 50px;
+    padding-left: '';
     color: cornflowerblue;
 }
 .v-icon{
@@ -156,7 +147,7 @@ ul li:hover a{
     color: #455055;
     position: fixed;
     bottom: 45vh;
-    left: 215px;
+    left: 55px;
     z-index: 9999;
     cursor: pointer;
 }

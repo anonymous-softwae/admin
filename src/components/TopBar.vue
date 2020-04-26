@@ -1,19 +1,19 @@
 <template>
-    <Menu id="menu" mode="horizontal" :theme="theme1" >
+    <Menu id="menu" mode="horizontal" theme="light" >
         <div class="logo"><img src="@/assets/zhongwen.png"></div>
         <div class="nav">
             <router-link to="/FrontPage"><MenuItem name="1">
                 <v-icon name="home" title="信息概览" class="v-icon"/>
                 <span>我的首页</span>
             </MenuItem></router-link>
-            <MenuItem name="2">
+            <router-link to="/EquipInfo"><MenuItem name="2">
                 <v-icon name="hdd" title="设备信息" class="v-icon"/>
                 <span>设备信息</span>
-            </MenuItem>
-            <MenuItem name="3">
+            </MenuItem></router-link>
+            <router-link to="/Charts"><MenuItem name="3">
                 <v-icon name="chart-bar" title="图谱分析"  class="v-icon"/>
                 <span>图谱分析</span>
-            </MenuItem>
+            </MenuItem></router-link>
             <MenuItem name="4">
                 <v-icon name="tools" title="设备维护"  class="v-icon"/>
                 <span>故障维护</span>
@@ -36,9 +36,7 @@
 <script>
 export default {
   data () {
-    return {
-      theme1: 'light'
-    }
+
   },
   mounted: function () {
   }
@@ -96,5 +94,8 @@ export default {
 .v-icon{
     margin: 0 10px;
     vertical-align:text-bottom;
+}
+.ivu-menu-item {
+    padding: 0 10px!important;
 }
 </style>

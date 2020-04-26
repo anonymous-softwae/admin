@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import FrontPage from '@/views/frontpage.vue'
-import SideBar from '@/components/SideBar.vue'
+import FrontPage from '@/views/FrontPage.vue'
+import SideBarEquipInfo from '@/components/SideBar_EquipInfo.vue'
+import SideBarCharts from '@/components/SideBar_Charts.vue'
+import SideBarFrontPage from '@/components/SideBar_FrontPage.vue'
+import EquipInfo from '@/views/EquipInfo.vue'
+import Chart from '@/views/Charts.vue'
 
 Vue.use(VueRouter)
 
@@ -11,7 +15,23 @@ const routes = [
     name: 'FrontPage',
     components: {
       content: FrontPage,
-      SideBar: SideBar
+      SideBar: SideBarFrontPage
+    }
+  },
+  {
+    path: '/EquipInfo',
+    name: 'EquipInfo',
+    components: {
+      content: EquipInfo,
+      SideBar: SideBarEquipInfo
+    }
+  },
+  {
+    path: '/Charts',
+    name: 'Charts',
+    components: {
+      content: Chart,
+      SideBar: SideBarCharts
     }
   },
   {

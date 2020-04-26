@@ -30,7 +30,7 @@ export default {
     }
    #content{
       background-color: rgb(235, 235, 235);
-      padding-top: 62px;
+      padding: 72px 10px 0 10px;
       overflow-y:auto;
       overflow-x:none;
       /* //兼容Firefox隐藏滚动条 */

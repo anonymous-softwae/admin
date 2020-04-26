@@ -1,9 +1,9 @@
 <template>
     <Table border :draggable="true" size="small" :columns="columns1" :data="data1" @on-drag-drop="onDragDrop">
         <template slot-scope="{ row }" slot="total_points">
-            振动测点4：{{ row.total_points }}<br>
-            温度测点4：{{ row.total_points }}<br>
-            压力测点4：{{ row.total_points }}
+            振动测点3：{{ row.total_points }}<br>
+            温度测点3：{{ row.total_points }}<br>
+            压力测点3：{{ row.total_points }}
         </template>
         <template slot-scope="{ row, index }" slot="action">
             <Button type="primary" size="default" @click="show(index)">进入图谱</Button>
