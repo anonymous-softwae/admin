@@ -27,7 +27,7 @@ const routes = [
     components: {
       TopBar: TopBar,
       SideBar: SideBarEquipInfo,
-      content: EquipInfo 
+      content: EquipInfo
     }
   },
   {

@@ -39,17 +39,20 @@ export default {
         {
           title: '总测点数',
           slot: 'total_points',
-          align: 'center'
+          align: 'center',
+          sortable: true
         },
         {
           title: '正常测点数',
           key: 'normal_points',
-          align: 'center'
+          align: 'center',
+          sortable: true
         },
         {
           title: '正常百分率',
           key: 'normal_perct',
-          align: 'center'
+          align: 'center',
+          sortable: true
         },
         {
           title: '查看详情',

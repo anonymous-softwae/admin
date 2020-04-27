@@ -2,11 +2,11 @@
 <div class="sideContainer">
     <div class="sidebar">
       <div class="head">
-        <v-icon :name='headlist.name' :title='headlist.title' class="v-icon" scale="1.2"/>
-        <span>{{headlist.title}}</span>
+        <v-icon :name="this.$store.state.headlist.name" :title="this.$store.state.headlist.title" class="v-icon" scale="1.2"/>
+        <span>{{this.$store.state.headlist.title}}</span>
       </div>
         <ul>
-            <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
+            <li v-for="list in $store.state.barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
         </ul>
         <div class="change_btn">
             <input type="checkbox" id="check"/>
@@ -19,41 +19,6 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      headlist: {
-        name: 'home',
-        title: '我的首页'
-      },
-      barlist: [
-        {
-          name: 'hdd',
-          title: '设备信息',
-          txt: '设备信息'
-        },
-        {
-          name: 'chart-bar',
-          title: '图谱分析',
-          txt: '图谱分析'
-        },
-        {
-          name: 'tools',
-          title: '故障维护',
-          txt: '故障维护'
-        },
-        {
-          name: 'receipt',
-          title: '报表管理',
-          txt: '报表管理'
-        },
-        {
-          name: 'cog',
-          title: '系统设置',
-          txt: '系统设置'
-        }
-      ]
-    }
-  },
   mounted: function () {
     $('#display_btn').click(function () {
       if (!$('#check').is(':checked')) {

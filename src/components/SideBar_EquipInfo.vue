@@ -2,11 +2,11 @@
 <div class="sideContainer">
     <div class="sidebar">
       <div class="head">
-        <v-icon :name='headlist.name' :title='headlist.title' class="v-icon" scale="1.2"/>
-        <span>{{headlist.title}}</span>
+        <v-icon :name='this.$store.state.headlist.name' :title='this.$store.state.headlist.title' class="v-icon" scale="1.2"/>
+        <span>{{this.$store.state.headlist.title}}</span>
       </div>
         <ul>
-            <li v-for="list in barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
+            <li v-for="list in this.$store.state.barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
         </ul>
         <div class="change_btn">
             <input type="checkbox" id="check"/>
@@ -19,32 +19,6 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      headlist: {
-        name: 'hdd',
-        title: '设备状态'
-      },
-      barlist: [
-        {
-          name: 'binoculars',
-          title: '状态总览',
-          txt: '状态总览'
-        },
-        {
-          name: 'route',
-          title: '设备导航树',
-          txt: '设备导航树'
-        },
-        {
-          name: 'exclamation-triangle',
-          title: '报警信息',
-          txt: '报警信息'
-        }
-
-      ]
-    }
-  },
   mounted: function () {
     $('#display_btn').click(function () {
       if (!$('#check').is(':checked')) {
