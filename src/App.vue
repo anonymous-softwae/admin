@@ -16,7 +16,8 @@ export default {
 
 }
 </script>
-<style lang="scss">
+
+<style lang ='scss'>
     html,body,#app{
       padding: 0px;
       margin: 0px;
@@ -27,11 +28,10 @@ export default {
       height: 100vh;
       display: flex;
       flex-flow: row nowrap;
-
     }
    #content{
       background-color: rgb(235, 235, 235);
-      padding: 72px 10px 0 10px;
+      padding: 72px 10px 10px 10px;
       overflow-y:auto;
       overflow-x:none;
       /* //兼容Firefox隐藏滚动条 */
@@ -51,4 +51,5 @@ export default {
           display: none;
       }
     }
+
 </style>

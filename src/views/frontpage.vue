@@ -1,107 +1,68 @@
 <template>
-    <Card style="width:350px">
-        <p slot="title">
-            <Icon type="ios-film-outline"></Icon>
-            Classic film
-        </p>
-        <a href="#" slot="extra" @click.prevent="changeLimit">
-            <Icon type="ios-loop-strong"></Icon>
-            Change
-        </a>
-        <ul>
-            <li v-for="item in randomMovieList" :key="item.index">
-                <a :href="item.url" target="_blank">{{ item.name }}</a>
-                <span>
-                    <Icon type="ios-star" v-for="n in 4" :key="n"></Icon><Icon type="ios-star" v-if="item.rate >= 9.5"></Icon><Icon type="ios-star-half" v-else></Icon>
-                    {{ item.rate }}
-                </span>
-            </li>
-        </ul>
-    </Card>
+<div class="outer">
+    <div class="inner" v-for='(data,index) in processedPosts' :key='index'>
+       <div class="card" v-for='info in data' :key="info.id">
+          <img :src='info.img' alt=""/><br>
+       </div>
+    </div>
+</div>
 </template>
 <script>
 export default {
   data () {
     return {
-      movieList: [
-        {
-          name: 'The Shawshank Redemption',
-          url: 'https://movie.douban.com/subject/1292052/',
-          rate: 9.6
-        },
-        {
-          name: 'Leon:The Professional',
-          url: 'https://movie.douban.com/subject/1295644/',
-          rate: 9.4
-        },
-        {
-          name: 'Farewell to My Concubine',
-          url: 'https://movie.douban.com/subject/1291546/',
-          rate: 9.5
-        },
-        {
-          name: 'Forrest Gump',
-          url: 'https://movie.douban.com/subject/1292720/',
-          rate: 9.4
-        },
-        {
-          name: 'Life Is Beautiful',
-          url: 'https://movie.douban.com/subject/1292063/',
-          rate: 9.5
-        },
-        {
-          name: 'Spirited Away',
-          url: 'https://movie.douban.com/subject/1291561/',
-          rate: 9.2
-        },
-        {
-          name: 'Schindler List',
-          url: 'https://movie.douban.com/subject/1295124/',
-          rate: 9.4
-        },
-        {
-          name: 'The Legend of 1900',
-          url: 'https://movie.douban.com/subject/1292001/',
-          rate: 9.2
-        },
-        {
-          name: 'WALL·E',
-          url: 'https://movie.douban.com/subject/2131459/',
-          rate: 9.3
-        },
-        {
-          name: 'Inception',
-          url: 'https://movie.douban.com/subject/3541415/',
-          rate: 9.2
-        }
-      ],
-      randomMovieList: []
+      datalist: []
+    }
+  },
+  computed: {
+    processedPosts () {
+      const posts = this.datalist
+      // Put Array into Chunks
+      let i
+      let j
+      const chunkedArray = []
+      const chunk = 5
+      for (i = 0, j = 0; i < posts.length; i += chunk, j++) {
+        chunkedArray[j] = posts.slice(i, i + chunk)
+      }
+      return chunkedArray
     }
   },
   methods: {
-    changeLimit () {
-      function getArrayItems (arr, num) {
-        const tempArray = []
-        for (const index in arr) {
-          tempArray.push(arr[index])
-        }
-        const returnArray = []
-        for (let i = 0; i < num; i++) {
-          if (tempArray.length > 0) {
-            const arrIndex = Math.floor(Math.random() * tempArray.length)
-            returnArray[i] = tempArray[arrIndex]
-            tempArray.splice(arrIndex, 1)
-          } else {
-            break
-          }
-        }
-        return returnArray
-      }
-      this.randomMovieList = getArrayItems(this.movieList, 5)
-    }
   },
   mounted () {
-    this.changeLimit()
+    this.axios({
+      url: 'https://api.apiopen.top/getImages ',
+      methods: 'get'
+    }).then(res => {
+      console.log(res.data)
+      this.datalist = res.data.result
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
 </script>
+<style scoped>
+.outer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.inner{
+  width: 25%;
+  height: 100%;
+}
+.card{
+height: 200px;
+width: 100%;
+margin: 10px 5px;
+padding: 10px;
+}
+.card img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+</style>

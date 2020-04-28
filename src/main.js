@@ -7,7 +7,9 @@ import 'view-design/dist/styles/iview.css'
 import router from './router'
 import 'jquery'
 import store from './store'
+import axios from 'axios'
 Vue.use(ViewUI)
+Vue.prototype.axios = axios
 Vue.component('v-icon', Icon)
 Vue.config.productionTip = false
 new Vue({

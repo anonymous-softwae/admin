@@ -1,16 +1,16 @@
 <template>
     <div class="login-container">
         <div class="login-box">
-            <h1>Welcome</h1>
+            <h1>用户登录</h1>
             <Form ref="formInline" :model="formInline" :rules="ruleInline">
             <FormItem prop="user">
-                <Input size="large" autofocus autocomplete="on" prefix="ios-contact" v-model="formInline.user" placeholder="Enter username..." style="width: 300px" />
+                <Input size="large" autofocus autocomplete="on" prefix="ios-contact" v-model="formInline.user" placeholder="请输入用户名..." style="width: 300px" />
             </FormItem>
             <FormItem prop="password">
-                <Input size="large" prefix="ios-lock" v-model="formInline.password" type="password" password placeholder="Enter password..." style="width: 300px" />
+                <Input size="large" prefix="ios-lock" v-model="formInline.password" type="password" password placeholder="请输入密码..." style="width: 300px" />
             </FormItem>
             <FormItem>
-                <Button type="primary" style="width: 300px;height:40px; font-size:16px" @click="handleSubmit('formInline')">Sign In</Button>
+                <Button type="primary" style="width: 300px;height:50px; font-size:16px" @click="handleSubmit('formInline')">提 交</Button>
             </FormItem>
             </Form>
         </div>
