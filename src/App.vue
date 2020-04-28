@@ -1,9 +1,10 @@
 <template>
     <Layout id="layout">
-      <router-view name="Login"></router-view>
+
       <router-view name="TopBar"></router-view>
       <router-view name="SideBar"></router-view>
       <Content id="content">
+          <router-view name="Login"></router-view>
           <router-view name="content"></router-view>
       </Content>
     </Layout>
@@ -31,7 +32,7 @@ export default {
     }
    #content{
       background-color: rgb(235, 235, 235);
-      padding: 72px 10px 10px 10px;
+      padding: 62px 0px 0px 0px;
       overflow-y:auto;
       overflow-x:none;
       /* //兼容Firefox隐藏滚动条 */

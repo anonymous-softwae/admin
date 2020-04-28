@@ -27,12 +27,33 @@
                 <span>设置</span>
             </MenuItem>
         </div>
+        <v-icon @click="screenExpan" name="expand-arrows-alt" scale="1.5" class="screenfull"/>
         <div class="Gadget">
-            <div class="search"><Input search enter-button placeholder="搜索..."/></div>
             <div class="login"><router-link to="/Login"><v-icon name="user" class="v-icon"/><span>登录</span></router-link></div>
+            <div class="search"><Input search enter-button placeholder="搜索..."/></div>
         </div>
     </Menu>
 </template>
+<script>
+import screenfull from 'screenfull'
+export default {
+  data () {
+    return {
+      isFullscreen: false
+    }
+  },
+  methods: {
+    // 显示全屏方法
+    screenExpan () {
+      if (!screenfull.isEnabled) {
+        this.$Message.warning('不支持全屏')
+        return false
+      }
+      screenfull.toggle()
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
  #menu{
     background:ghostwhite;
@@ -59,7 +80,7 @@
     float: right;
     display: flex;
     flex-flow: row nowrap;
-    margin-right: 15px;
+    margin-right: 65px;
 }
 .search{
     line-height: 62px;
@@ -88,5 +109,10 @@
 }
 .ivu-menu-item {
     padding: 0 10px!important;
+}
+.screenfull{
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 </style>

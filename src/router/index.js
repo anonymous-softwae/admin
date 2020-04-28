@@ -43,7 +43,8 @@ const routes = [
     path: '/Login',
     name: 'Login',
     components: {
-      Login: Login
+      Login: Login,
+      TopBar: TopBar
     }
   },
   {
