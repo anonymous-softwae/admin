@@ -1,19 +1,59 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Frontpage from '@/views/Frontpage.vue'
+import FrontPage from '@/views/frontpage.vue'
+import SideBarEquipInfo from '@/components/SideBar_EquipInfo.vue'
+import SideBarCharts from '@/components/SideBar_Charts.vue'
+import SideBarFrontPage from '@/components/SideBar_FrontPage.vue'
+import TopBar from '@/components/TopBar.vue'
+import EquipInfo from '@/views/EquipInfo.vue'
+import Login from '@/views/Login.vue'
+import Chart from '@/views/Charts.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/Frontpage',
-    name: 'Frontpage',
-    component: Frontpage
+    path: '/FrontPage',
+    name: 'FrontPage',
+    components: {
+      TopBar: TopBar,
+      SideBar: SideBarFrontPage,
+      content: FrontPage
+    }
+  },
+  {
+    path: '/EquipInfo',
+    name: 'EquipInfo',
+    components: {
+      TopBar: TopBar,
+      SideBar: SideBarEquipInfo,
+      content: EquipInfo
+    }
+  },
+  {
+    path: '/Charts',
+    name: 'Charts',
+    components: {
+      TopBar: TopBar,
+      SideBar: SideBarCharts,
+      content: Chart
+    }
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    components: {
+      Login: Login,
+      TopBar: TopBar
+    }
   },
   {
     path: '*',
-    name: 'Frontpage',
-    component: Frontpage
+    name: 'all',
+    components: {
+      Login: Login,
+      TopBar: TopBar
+    }
   }
 ]
 

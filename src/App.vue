@@ -1,25 +1,24 @@
 <template>
     <Layout id="layout">
-        <SideBar></SideBar>
-        <Layout id="sulayout">
-          <TopBar></TopBar>
-          <Content>
-            <router-view></router-view>
-          </Content>
-        </Layout>
+
+      <router-view name="TopBar"></router-view>
+      <router-view name="SideBar"></router-view>
+      <Content id="content">
+          <router-view name="Login"></router-view>
+          <router-view name="content"></router-view>
+      </Content>
     </Layout>
 </template>
 <script>
-import TopBar from '@/components/TopBar'
-import SideBar from '@/components/SideBar'
 import Vue from 'vue'
+import TopBar from '@/components/TopBar.vue'
 Vue.component('TopBar', TopBar)
-Vue.component('SideBar', SideBar)
 export default {
 
 }
 </script>
-<style lang="scss">
+
+<style lang ='scss'>
     html,body,#app{
       padding: 0px;
       margin: 0px;
@@ -32,10 +31,10 @@ export default {
       display: flex;
       flex-flow: row nowrap;
     }
-    #sulayout{
-      height: 100%;
+   #content{
       background-color: rgb(235, 235, 235);
-      overflow-y:scroll;
+      padding: 62px 0px 0px 0px;
+      overflow-y:auto;
       overflow-x:none;
       /* //兼容Firefox隐藏滚动条 */
       scrollbar-width: none;

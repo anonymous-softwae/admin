@@ -6,12 +6,14 @@ import Icon from 'vue-awesome/components/Icon'
 import 'view-design/dist/styles/iview.css'
 import router from './router'
 import 'jquery'
-// import store from './store'
+import store from './store'
+import axios from 'axios'
 Vue.use(ViewUI)
+Vue.prototype.axios = axios
 Vue.component('v-icon', Icon)
 Vue.config.productionTip = false
 new Vue({
   router,
-  // store,
+  store,
   render: h => h(App)
 }).$mount('#app')
