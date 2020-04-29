@@ -2,11 +2,11 @@
 <div class="sideContainer">
     <div class="sidebar">
       <div class="head">
-        <v-icon :name="this.$store.state.headlist.name" :title="this.$store.state.headlist.title" class="v-icon" scale="1.2"/>
-        <span>{{this.$store.state.headlist.title}}</span>
+        <v-icon :name="this.$store.state.barlist[0].iconname" :title="this.$store.state.barlist[0].title" class="v-icon" scale="1.2"/>
+        <span>{{this.$store.state.barlist[0].title}}</span>
       </div>
         <ul>
-            <li v-for="list in $store.state.barlist" :key="list.index"><a href="#"><v-icon :name="list.name" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
+            <li v-for="list in $store.state.selectlist" :key="list.index"><a href="#"><v-icon :name="list.childname" :title="list.title" class="v-icon"/><span>{{list.txt}}</span></a></li>
         </ul>
         <div class="change_btn">
             <input type="checkbox" id="check"/>

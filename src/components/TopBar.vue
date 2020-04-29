@@ -1,30 +1,30 @@
 <template>
     <Menu id="menu" mode="horizontal" theme="light" >
         <div class="logo"><img src="@/assets/logo.png"></div>
-        <div class="nav">
-            <router-link to="/FrontPage"><MenuItem name="1">
-                <v-icon name="home" title="信息概览" class="v-icon"/>
-                <span>首页</span>
-            </MenuItem></router-link>
-            <router-link to="/EquipInfo"><MenuItem name="2">
-                <v-icon name="hdd" title="设备状态" class="v-icon"/>
-                <span>机组状态</span>
-            </MenuItem></router-link>
-            <router-link to="/Charts"><MenuItem name="3">
-                <v-icon name="chart-bar" title="图谱分析"  class="v-icon"/>
-                <span>图谱</span>
-            </MenuItem></router-link>
-            <MenuItem name="4">
-                <v-icon name="tools" title="设备维护"  class="v-icon"/>
-                <span>事件列表</span>
+        <div class="nav" >
+           <MenuItem name="1" @click.native="menuclick1">
+                <router-link to="/FrontPage" ><v-icon :name="this.$store.state.barlist[0].iconname" :title="this.$store.state.barlist[0].title" class="v-icon" />
+                <span>{{this.$store.state.barlist[0].txt}}</span></router-link>
             </MenuItem>
-            <MenuItem name="5">
-                <v-icon name="receipt" title="报表系统"  class="v-icon"/>
-                <span>报表</span>
+            <router-link to="/EquipInfo"><MenuItem name="2" @click.native="menuclick2">
+                <v-icon :name="this.$store.state.barlist[1].iconname" :title="this.$store.state.barlist[1].title" class="v-icon"/>
+                <span>{{this.$store.state.barlist[1].txt}}</span>
+            </MenuItem></router-link>
+            <router-link to="/Charts"><MenuItem name="3" ref='menuitem' tagname='3' @click.native="menuclick">
+                <v-icon :name="this.$store.state.barlist[2].iconname" :title="this.$store.state.barlist[2].title"  class="v-icon"/>
+                <span>{{this.$store.state.barlist[2].txt}}</span>
+            </MenuItem></router-link>
+            <MenuItem name="4" ref='menuitem1' :tagname='0' @click.native="menuclick">
+                <v-icon :name="this.$store.state.barlist[3].iconname" :title="this.$store.state.barlist[3].title"  class="v-icon"/>
+                <span>{{this.$store.state.barlist[3].txt}}</span>
             </MenuItem>
-            <MenuItem name="6">
-                <v-icon name="cog" title="系统设置"  class="v-icon"/>
-                <span>设置</span>
+            <MenuItem name="5"  ref='menuitem' tagname='5' @click.native="menuclick">
+                <v-icon :name="this.$store.state.barlist[4].iconname" :title="this.$store.state.barlist[4].title"  class="v-icon"/>
+                <span>{{this.$store.state.barlist[4].txt}}</span>
+            </MenuItem>
+            <MenuItem name="6"  ref='menuitem' tagname='6' @click.native="menuclick">
+                <v-icon :name="this.$store.state.barlist[5].iconname" :title="this.$store.state.barlist[5].title"  class="v-icon"/>
+                <span>{{this.$store.state.barlist[5].txt}}</span>
             </MenuItem>
         </div>
         <v-icon @click="screenExpan" name="expand-arrows-alt" scale="1.5" class="screenfull"/>
@@ -42,6 +42,7 @@ export default {
       isFullscreen: false
     }
   },
+  props: ['tagname'],
   methods: {
     // 显示全屏方法
     screenExpan () {
@@ -50,6 +51,18 @@ export default {
         return false
       }
       screenfull.toggle()
+    },
+    menuclick1 () {
+      console.log('hello')
+      var menulist = 0
+      console.log(menulist)
+      this.$store.commit('barlistchange', menulist)
+    },
+    menuclick2 () {
+      console.log('hello')
+      var menulist = 1
+      console.log(menulist)
+      this.$store.commit('barlistchange', menulist)
     }
   }
 }
@@ -104,11 +117,12 @@ export default {
     font-size: 16px;
 }
 .v-icon{
-    margin: 0 10px;
+    margin: 0px 10px 0 0;
     vertical-align:text-bottom;
 }
 .ivu-menu-item {
     padding: 0 10px!important;
+    margin: 0 5px;
 }
 .screenfull{
     position: absolute;

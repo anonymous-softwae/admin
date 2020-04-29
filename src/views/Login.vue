@@ -10,7 +10,7 @@
                 <Input size="large" prefix="ios-lock" v-model="formInline.password" type="password" password placeholder="请输入密码..." style="width: 300px" />
             </FormItem>
             <FormItem>
-                <Button type="primary" style="width: 300px;height:50px; font-size:16px" @click="handleSubmit('formInline')">提 交</Button>
+                <Button type="primary" style="width: 300px;height:40px; font-size:16px" @click="handleSubmit('formInline')">提 交</Button>
             </FormItem>
             </Form>
         </div>

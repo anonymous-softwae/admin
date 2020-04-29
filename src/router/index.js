@@ -51,7 +51,8 @@ const routes = [
     path: '*',
     name: 'all',
     components: {
-      Login: Login
+      Login: Login,
+      TopBar: TopBar
     }
   }
 ]
