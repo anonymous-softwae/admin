@@ -8,7 +8,6 @@
 </div>
 </template>
 <script>
-import qs from 'qs'
 export default {
   data () {
     return {
@@ -41,21 +40,18 @@ export default {
     // }).catch(err => {
     //   console.log(err)
     // })
-
-    var params = {
-      username: 'cc1',
-      password: '5157',
-      userMail: 'chenyc@jaster.cn',
-      userPhone: '12332001721',
-      userAdmin: false,
-      userRight: 0,
-      userStop: false
-    }
     this.axios({
       method: 'post',
       url: 'http://localhost:3000/users/register',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: qs.stringify(params)
+      data: {
+        username: 'cc1',
+        password: '5157',
+        userMail: 'chenyc@jaster.cn',
+        userPhone: '12332001721',
+        userAdmin: false,
+        userRight: 0,
+        userStop: false
+      }
     }).then(res => console.log(res.data)).catch(err => console.log(err))
   }
 }
