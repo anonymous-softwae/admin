@@ -10,5 +10,8 @@ module.exports = {
         'window.jQuery': 'jquery'
       })
     ]
-  }
+  },
+  transpileDependencies: [
+    /\bvue-awesome\b/
+  ]
 }

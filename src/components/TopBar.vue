@@ -2,10 +2,10 @@
     <Menu id="menu" mode="horizontal" theme="light" >
         <div class="logo"><img src="@/assets/logo.png"></div>
         <div class="nav" >
-           <MenuItem name="1" @click.native="menuclick1">
-                <router-link to="/FrontPage" ><v-icon :name="this.$store.state.barlist[0].iconname" :title="this.$store.state.barlist[0].title" class="v-icon" />
-                <span>{{this.$store.state.barlist[0].txt}}</span></router-link>
-            </MenuItem>
+           <router-link to="/FrontPage" ><MenuItem name="1" @click.native="menuclick1">
+                <v-icon :name="this.$store.state.barlist[0].iconname" :title="this.$store.state.barlist[0].title" class="v-icon" />
+                <span>{{this.$store.state.barlist[0].txt}}</span>
+            </MenuItem></router-link>
             <router-link to="/EquipInfo"><MenuItem name="2" @click.native="menuclick2">
                 <v-icon :name="this.$store.state.barlist[1].iconname" :title="this.$store.state.barlist[1].title" class="v-icon"/>
                 <span>{{this.$store.state.barlist[1].txt}}</span>
